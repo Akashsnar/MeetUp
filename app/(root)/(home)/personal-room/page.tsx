@@ -54,6 +54,7 @@ const PersonalRoom = () => {
   };
 
   const meetingLink = `${process.env.NEXT_PUBLIC_BASE_URL}/meeting/${meetingId}?personal=true`;
+console.log(user, " => ", user?user.username:"koi na");
 
   return (
     <section className="flex size-full flex-col gap-10 text-white">

@@ -1,30 +1,18 @@
-'use client'
+'use client';
 
-import React from 'react'
-import { usePathname } from 'next/navigation'
+import Image from 'next/image';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 
-import {
-  Sheet,
-  SheetContent,
-  SheetClose,
-  SheetDescription,
-  SheetHeader,
-  SheetTitle,
-  SheetTrigger,
-} from "@/components/ui/sheet"
-import Image from 'next/image'
-import Link from 'next/link'
+import { Sheet, SheetClose, SheetContent, SheetTrigger } from '@/components/ui/sheet';
+import { sidebarLinks } from '@/constants';
 import { cn } from '@/lib/utils';
 
-import { SideBarlinks } from '@/constants'
-
-
-const MobilNav = () => {
-  const  pathname=usePathname();
+const MobileNav = () => {
+  const pathname = usePathname();
 
   return (
-    <div>
-
+    <section className="w-full max-w-[264px]">
       <Sheet>
         <SheetTrigger asChild>
           <Image
@@ -41,14 +29,14 @@ const MobilNav = () => {
               src="/icons/logo.svg"
               width={32}
               height={32}
-              alt="Zoom logo"
+              alt="yoom logo"
             />
-            <p className="text-[26px] font-extrabold text-white">ZOOM</p>
+            <p className="text-[26px] font-extrabold text-white">YOOM</p>
           </Link>
           <div className="flex h-[calc(100vh-72px)] flex-col justify-between overflow-y-auto">
             <SheetClose asChild>
               <section className=" flex h-full flex-col gap-6 pt-16 text-white">
-                {SideBarlinks.map((item) => {
+                {sidebarLinks.map((item) => {
                   const isActive = pathname === item.route;
 
                   return (
@@ -64,7 +52,7 @@ const MobilNav = () => {
                         )}
                       >
                         <Image
-                          src={item.imgUrl}
+                          src={item.imgURL}
                           alt={item.label}
                           width={20}
                           height={20}
@@ -79,10 +67,8 @@ const MobilNav = () => {
           </div>
         </SheetContent>
       </Sheet>
+    </section>
+  );
+};
 
-
-    </div>
-  )
-}
-
-export default MobilNav
+export default MobileNav;
